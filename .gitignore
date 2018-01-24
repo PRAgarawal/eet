@@ -1,0 +1,7 @@
+/dev.env
+/omgbot
+/vendor
+/.build
+/.release
+/netrc
+.glide
