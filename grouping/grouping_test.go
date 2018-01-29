@@ -1,8 +1,8 @@
 package grouping
 
 import (
-	"testing"
 	"strconv"
+	"testing"
 
 	"github.com/PRAgarawal/eet/eet"
 )

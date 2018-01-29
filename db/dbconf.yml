@@ -1,0 +1,3 @@
+development:
+  driver: mysql
+  open: $EET_SERVICE_DSN

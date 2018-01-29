@@ -6,5 +6,3 @@ This is a slack bot that is meant to gather volunteers for people who would like
 ### API
 POST to `/join_meeting`
 POST to `/leave_meeting`
-
-NOTE: The entire `jsonapi` package is essentially a straight copy of the `github.com/go-kit/kit/transport/http` package, updated to make use of OrderMyGear's jsonapi library's encoding and decoding.

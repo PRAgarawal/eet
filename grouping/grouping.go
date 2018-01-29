@@ -7,17 +7,17 @@ import (
 )
 
 const (
-	minGroupSize = 5
+	minGroupSize   = 5
 	idealGroupSize = 6
-	maxGroupSize = 8
+	maxGroupSize   = 8
 )
 
 type MemberGrouping struct {
-	members []*eet.MeetingMember
-	idealGroupCount int
-	remainder int
+	members             []*eet.MeetingMember
+	idealGroupCount     int
+	remainder           int
 	remainderGroupCount int
-	groups [][]*eet.MeetingMember
+	groups              [][]*eet.MeetingMember
 }
 
 func (g *MemberGrouping) SetMembers(members []*eet.MeetingMember) {
@@ -42,7 +42,7 @@ func (g *MemberGrouping) RandomlyGroup() [][]*eet.MeetingMember {
 
 	g.setGroupCounts()
 
-	g.groups = make([][]*eet.MeetingMember, g.idealGroupCount + g.remainderGroupCount)
+	g.groups = make([][]*eet.MeetingMember, g.idealGroupCount+g.remainderGroupCount)
 
 	g.divideIdeallySizedGroups()
 	g.divideRemainderGroups()
@@ -51,8 +51,8 @@ func (g *MemberGrouping) RandomlyGroup() [][]*eet.MeetingMember {
 }
 
 func (g *MemberGrouping) setGroupCounts() {
-	g.idealGroupCount = len(g.members)/idealGroupSize
-	g.remainder = len(g.members)%idealGroupSize
+	g.idealGroupCount = len(g.members) / idealGroupSize
+	g.remainder = len(g.members) % idealGroupSize
 
 	if g.remainder < minGroupSize {
 		g.idealGroupCount -= 1
@@ -70,7 +70,7 @@ func (g *MemberGrouping) divideIdeallySizedGroups() {
 	for i := 0; i < g.idealGroupCount; i++ {
 		g.groups[i] = make([]*eet.MeetingMember, idealGroupSize)
 		for j := 0; j < idealGroupSize; j++ {
-			g.groups[i][j] = g.members[i * idealGroupSize + j]
+			g.groups[i][j] = g.members[i*idealGroupSize+j]
 		}
 	}
 }
@@ -78,18 +78,18 @@ func (g *MemberGrouping) divideIdeallySizedGroups() {
 func (g *MemberGrouping) divideRemainderGroups() {
 	if g.remainder > maxGroupSize {
 		g.groups[g.idealGroupCount] = make([]*eet.MeetingMember, minGroupSize)
-		g.groups[g.idealGroupCount + 1] = make([]*eet.MeetingMember, g.remainder - minGroupSize)
+		g.groups[g.idealGroupCount+1] = make([]*eet.MeetingMember, g.remainder-minGroupSize)
 	} else {
 		g.groups[g.idealGroupCount] = make([]*eet.MeetingMember, g.remainder)
 	}
 
 	for i := 0; i < g.remainder; i++ {
-		offset := g.idealGroupCount * idealGroupSize + i
+		offset := g.idealGroupCount*idealGroupSize + i
 
 		if i < minGroupSize || g.remainder <= maxGroupSize {
 			g.groups[g.idealGroupCount][i] = g.members[offset]
 		} else {
-			g.groups[g.idealGroupCount + 1][i - minGroupSize] = g.members[offset]
+			g.groups[g.idealGroupCount+1][i-minGroupSize] = g.members[offset]
 		}
 	}
 }

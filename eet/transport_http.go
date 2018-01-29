@@ -2,24 +2,22 @@ package eet
 
 import (
 	"context"
-	"net/http"
 	"encoding/json"
+	"net/http"
 
 	"github.com/go-kit/kit/log"
-	"github.com/gorilla/mux"
 	httptransport "github.com/go-kit/kit/transport/http"
+	"github.com/gorilla/mux"
 )
 
 type JoinMeetingRequest struct {
-
 }
 
 type LeaveMeetingRequest struct {
-
 }
 
 // MakeHTTPHandler returns a handler for the iteming service.
-func MakeItemHTTPHandler(ctx context.Context, endpoints ServiceEndpoints, logger log.Logger) http.Handler {
+func MakeEetHTTPHandler(ctx context.Context, endpoints ServiceEndpoints, logger log.Logger) http.Handler {
 	r := mux.NewRouter()
 
 	r.Methods("POST").Path("/join_meeting/").Handler(httptransport.NewServer(

@@ -32,7 +32,7 @@ func (se *ServiceEndpoints) RemoveMeetingMembers(ctx context.Context, item []*Me
 
 // MakeServerEndpoints returns an Endpoints struct where each endpoint invokes
 // the corresponding method on the provided service. Useful in a item server.
-func MakeItemServerEndpoints(s Service) ServiceEndpoints {
+func MakeEetServerEndpoints(s Service) ServiceEndpoints {
 	return ServiceEndpoints{
 		AddMeetingMemberEndpoint:    makeAddMeetingMemberEndpoint(s),
 		RemoveMeetingMemberEndpoint: makeRemoveMeetingMemberEndpoint(s),
