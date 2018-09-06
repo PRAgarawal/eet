@@ -2,39 +2,13 @@
 
 
 [[projects]]
-  name = "github.com/DataDog/dd-trace-go"
-  packages = ["tracer","tracer/ext"]
-  revision = "66d30ecd989ecbdc79a95347fca5ba027f625449"
-  version = "v0.6.0"
-
-[[projects]]
-  branch = "master"
-  name = "github.com/OrderMyGear/common-go"
-  packages = ["transport/jsonapi"]
-  revision = "e20a6626ced2455711aeaa828077db4440554e9d"
-
-[[projects]]
-  branch = "master"
-  name = "github.com/OrderMyGear/json-api"
-  packages = [".","healthz","meta"]
-  revision = "1acce7bd615057a5e666e876e020d0b086de02fd"
-
-[[projects]]
-  name = "github.com/OrderMyGear/order-service"
-  packages = ["order"]
-  revision = "450eae9105f320a68910c679abb5b9faf726dda9"
-  version = "v5"
-
-[[projects]]
-  name = "github.com/VividCortex/gohistogram"
-  packages = ["."]
-  revision = "51564d9861991fb0ad0f531c99ef602d0f9866e6"
-  version = "v1.0.0"
-
-[[projects]]
   branch = "master"
   name = "github.com/go-kit/kit"
-  packages = ["endpoint","log","metrics","metrics/discard","metrics/dogstatsd","metrics/generic","metrics/internal/lv","metrics/internal/ratemap","transport/http","util/conn"]
+  packages = [
+    "endpoint",
+    "log",
+    "transport/http"
+  ]
   revision = "953e747656a7bbb5e1f998608b460458958b70cc"
 
 [[projects]]
@@ -42,18 +16,6 @@
   packages = ["."]
   revision = "390ab7935ee28ec6b286364bba9b4dd6410cb3d5"
   version = "v0.3.0"
-
-[[projects]]
-  name = "github.com/go-playground/locales"
-  packages = [".","currency"]
-  revision = "e4cbcb5d0652150d40ad0646651076b6bd2be4f6"
-  version = "v0.11.2"
-
-[[projects]]
-  name = "github.com/go-playground/universal-translator"
-  packages = ["."]
-  revision = "b32fa301c9fe55953584134cb6853a13c87ec0a1"
-  version = "v0.16.0"
 
 [[projects]]
   name = "github.com/go-sql-driver/mysql"
@@ -82,7 +44,10 @@
 [[projects]]
   branch = "master"
   name = "github.com/jmoiron/sqlx"
-  packages = [".","reflectx"]
+  packages = [
+    ".",
+    "reflectx"
+  ]
   revision = "de8647470aafe4854c976707c431dbe1eb2822c6"
 
 [[projects]]
@@ -109,44 +74,9 @@
   revision = "a6b93000bd219143c56c16e6cb1c4b91da3f224b"
   version = "v1.0"
 
-[[projects]]
-  name = "github.com/nlopes/slack"
-  packages = ["."]
-  revision = "c86337c0ef2486a15edd804355d9c73d2f2caed1"
-  version = "v0.1.0"
-
-[[projects]]
-  branch = "master"
-  name = "github.com/pkg/errors"
-  packages = ["."]
-  revision = "e881fd58d78e04cf6d0de1217f8707c8cc2249bc"
-
-[[projects]]
-  name = "github.com/ugorji/go"
-  packages = ["codec"]
-  revision = "9c7f9b7a2bc3a520f7c7b30b34b7f85f47fe27b6"
-
-[[projects]]
-  branch = "master"
-  name = "golang.org/x/net"
-  packages = ["websocket"]
-  revision = "5ccada7d0a7ba9aeb5d3aca8d3501b4c2a509fec"
-
-[[projects]]
-  branch = "master"
-  name = "golang.org/x/sys"
-  packages = ["windows"]
-  revision = "2c42eef0765b9837fbdab12011af7830f55f88f0"
-
-[[projects]]
-  name = "gopkg.in/go-playground/validator.v9"
-  packages = ["."]
-  revision = "6d8c18553ea1ac493d049edd6f102f52e618f085"
-  version = "v9.3.6"
-
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
-  inputs-digest = "80fdc6a0dff2b24467b1168f677d0cf46fa16bc0a3e565f4cfc8713f96235b96"
+  inputs-digest = "01b2ab281825c6bf6cc83b580f3c65a1722956610b038d56d11784849d19a3ec"
   solver-name = "gps-cdcl"
   solver-version = 1

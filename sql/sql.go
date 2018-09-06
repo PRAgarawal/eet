@@ -3,7 +3,6 @@ package sql
 import (
 	"time"
 
-	"github.com/OrderMyGear/order-service/order"
 	"github.com/PRAgarawal/eet/eet"
 	_ "github.com/go-sql-driver/mysql"
 	"github.com/jmoiron/sqlx"
@@ -35,43 +34,43 @@ func (r *Repository) Ping() error {
 	return r.db.Ping()
 }
 
-func (r *Repository) FindMeetingMembers(filter *eet.MeetingMemberFilter) ([]*order.Item, error) {
-	var items []*order.Item
+func (r *Repository) FindMeetingMembers(filter *eet.MeetingMemberFilter) ([]*eet.MeetingMember, error) {
+	var mms []*eet.MeetingMember
 	sb := sq.Select("meeting_member.*").
 		From("meeting_member")
 	q, args, _ := sb.ToSql()
 
-	err := r.db.Select(&items, q, args...)
+	err := r.db.Select(&mms, q, args...)
 	if err != nil {
-		return items, err
+		return mms, err
 	}
 
-	return items, nil
+	return mms, nil
 }
 
-func (r *Repository) FindMeetingMembersByTeam(filter *eet.MeetingMemberFilter) ([]*order.Item, error) {
-	var items []*order.Item
+func (r *Repository) FindMeetingMembersByTeam(filter *eet.MeetingMemberFilter) ([]*eet.MeetingMember, error) {
+	var mms []*eet.MeetingMember
 	sb := sq.Select("meeting_member.*").
 		From("meeting_member")
 	q, args, _ := sb.ToSql()
 
-	err := r.db.Select(&items, q, args...)
+	err := r.db.Select(&mms, q, args...)
 	if err != nil {
-		return items, err
+		return mms, err
 	}
 
-	return items, nil
+	return mms, nil
 }
 
-func (r *Repository) StoreMeetingMember(i *order.Item) error {
+func (r *Repository) StoreMeetingMember(mm *eet.MeetingMember) error {
 	tx, err := r.db.Beginx()
 	if nil != err {
 		return err
 	}
 
 	// Insert
-	i.CreatedAt = time.Now()
-	_, err = tx.NamedExec("INSERT INTO `meeting_member` (name,type,quantity,unit_price,total,external_id,status,order_id,created_at) VALUES (:name,:type,:quantity,:unit_price,:total,:external_id,:status,:order_id,:created_at)", i)
+	mm.CreatedAt = time.Now()
+	_, err = tx.NamedExec("INSERT INTO `meeting_member` (name,type,quantity,unit_price,total,external_id,status,order_id,created_at) VALUES (:name,:type,:quantity,:unit_price,:total,:external_id,:status,:order_id,:created_at)", mm)
 	if err != nil {
 		tx.Rollback()
 		return err
